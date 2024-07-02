@@ -8,10 +8,14 @@ export class TemperaturePipe implements PipeTransform {
     // constructor(private decimalPipe: DecimalPipe) { }
 
     transform(
-        value: string | number,
+        value: string | number | null,
         inputType: 'cel' | 'fah',
         outputType?: 'cel' | 'fah',
     ) {
+        if (value === null) {
+            return value;
+        }
+
         let val: number;
 
         if (typeof value === 'string') {
